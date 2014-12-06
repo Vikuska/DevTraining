@@ -1,57 +1,51 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace SuperMegaCoolQueue
 {
-    public class MySuperQueue<T> : IQueue<T>
+    public class SexyStack<T>: ISexyStack<T>
     {
-        public int Count
-        {
-            get { return _count; }
-        }
+        public int Count { get { return _count; } }
 
         private ListNode<T> _first;
         private ListNode<T> _last;
         private int _count;
-        
-        public MySuperQueue()
+
+        public SexyStack()
         {
             _first = new ListNode<T>(default(T));
             _last = _first;
             _count = 0;
         }
 
-        public void Enqueue(T item)
+        public T Peek()
+        {
+            CheckIfEmpty();
+            return _first.Data;
+        }
+
+        public void Push(T item)
         {
             ListNode<T> newItem = new ListNode<T>(item);
 
             if (Empty())
                 _first = newItem;
 
-            _last.Next = newItem;
-            _last = newItem;
-
+            newItem.Next = _first;
+            _first = newItem;
             _count++;
         }
 
-        public ListNode<T> Dequeue()
+        public T Pop()
         {
             CheckIfEmpty();
-            var elementToDeueue = _first;
+            var deleted = _first.Data;
             _first = _first.Next ?? _last;
             _count--;
-            return elementToDeueue;
-        }
-
-        public T FirstElement()
-        {
-            CheckIfEmpty();
-            return _first.Data;
-        }
-
-        public T LastElement()
-        {
-            CheckIfEmpty();
-            return _last.Data;
+            return deleted;
         }
 
         private bool Empty()
@@ -62,7 +56,7 @@ namespace SuperMegaCoolQueue
         private void CheckIfEmpty()
         {
             if (Empty())
-                throw new Exception("Queue is empty");
+                throw new Exception("Stack is empty");
         }
     }
 }

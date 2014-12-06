@@ -41,9 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IQueue.cs" />
+    <Compile Include="ISexyStack.cs" />
+    <Compile Include="ListNode.cs" />
     <Compile Include="MySuperQueue.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SexyStack.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
