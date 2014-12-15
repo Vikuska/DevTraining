@@ -22,7 +22,7 @@ namespace SuperMegaCoolQueue
 
         public T Peek()
         {
-            CheckIfEmpty();
+            ValidateIfEmpty();
             return _first.Data;
         }
 
@@ -40,7 +40,7 @@ namespace SuperMegaCoolQueue
 
         public T Pop()
         {
-            CheckIfEmpty();
+            ValidateIfEmpty();
             var deleted = _first.Data;
             _first = _first.Next ?? _last;
             Count--;
@@ -52,7 +52,7 @@ namespace SuperMegaCoolQueue
             return (Count == 0);
         }
 
-        private void CheckIfEmpty()
+        private void ValidateIfEmpty()
         {
             if (Empty())
                 throw new Exception("Stack is empty");

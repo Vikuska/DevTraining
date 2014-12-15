@@ -31,7 +31,7 @@ namespace SuperMegaCoolQueue
 
         public T Dequeue()
         {
-            CheckIfEmpty();
+            ValidateIfEmpty();
             var elementToDeueue = _first;
             _first = _first.Next ?? _last;
             Count--;
@@ -40,13 +40,13 @@ namespace SuperMegaCoolQueue
 
         public T FirstElement()
         {
-            CheckIfEmpty();
+            ValidateIfEmpty();
             return _first.Data;
         }
 
         public T LastElement()
         {
-            CheckIfEmpty();
+            ValidateIfEmpty();
             return _last.Data;
         }
 
@@ -55,7 +55,7 @@ namespace SuperMegaCoolQueue
             return (Count == 0);
         }
 
-        private void CheckIfEmpty()
+        private void ValidateIfEmpty()
         {
             if (Empty())
                 throw new Exception("Queue is empty");
