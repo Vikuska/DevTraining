@@ -4,20 +4,16 @@ namespace SuperMegaCoolQueue
 {
     public class MySuperQueue<T> : IQueue<T>
     {
-        public int Count
-        {
-            get { return _count; }
-        }
+        public int Count { get; private set; }
 
         private ListNode<T> _first;
         private ListNode<T> _last;
-        private int _count;
-        
+
         public MySuperQueue()
         {
             _first = new ListNode<T>(default(T));
             _last = _first;
-            _count = 0;
+            Count = 0;
         }
 
         public void Enqueue(T item)
@@ -30,16 +26,16 @@ namespace SuperMegaCoolQueue
             _last.Next = newItem;
             _last = newItem;
 
-            _count++;
+            Count++;
         }
 
-        public ListNode<T> Dequeue()
+        public T Dequeue()
         {
             CheckIfEmpty();
             var elementToDeueue = _first;
             _first = _first.Next ?? _last;
-            _count--;
-            return elementToDeueue;
+            Count--;
+            return elementToDeueue.Data;
         }
 
         public T FirstElement()
@@ -56,7 +52,7 @@ namespace SuperMegaCoolQueue
 
         private bool Empty()
         {
-            return (_count == 0) || (_first == null);
+            return (Count == 0);
         }
 
         private void CheckIfEmpty()

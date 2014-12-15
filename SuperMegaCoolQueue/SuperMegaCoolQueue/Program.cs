@@ -23,7 +23,7 @@ namespace SuperMegaCoolQueue
             Console.WriteLine("LastElement = {0}", q.LastElement());
 
             var deleted = q.Dequeue();
-            Console.WriteLine("deleted: {0}", deleted.Data);
+            Console.WriteLine("deleted: {0}", deleted);
             Console.WriteLine("Count = {0}", q.Count);
             Console.WriteLine("FirstElement = {0}", q.FirstElement());
 

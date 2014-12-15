@@ -11,6 +11,6 @@ namespace SuperMegaCoolQueue
         T FirstElement();
         T LastElement();
         void Enqueue(T item);
-        ListNode<T> Dequeue();
+        T Dequeue();
     }
 }

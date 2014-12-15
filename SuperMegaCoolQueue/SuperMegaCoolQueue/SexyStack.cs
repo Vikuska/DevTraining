@@ -8,17 +8,16 @@ namespace SuperMegaCoolQueue
 {
     public class SexyStack<T>: ISexyStack<T>
     {
-        public int Count { get { return _count; } }
+        public int Count { get; private set; }
 
         private ListNode<T> _first;
         private ListNode<T> _last;
-        private int _count;
 
         public SexyStack()
         {
             _first = new ListNode<T>(default(T));
             _last = _first;
-            _count = 0;
+            Count = 0;
         }
 
         public T Peek()
@@ -29,14 +28,14 @@ namespace SuperMegaCoolQueue
 
         public void Push(T item)
         {
-            ListNode<T> newItem = new ListNode<T>(item);
+            var newItem = new ListNode<T>(item);
 
             if (Empty())
                 _first = newItem;
 
             newItem.Next = _first;
             _first = newItem;
-            _count++;
+            Count++;
         }
 
         public T Pop()
@@ -44,13 +43,13 @@ namespace SuperMegaCoolQueue
             CheckIfEmpty();
             var deleted = _first.Data;
             _first = _first.Next ?? _last;
-            _count--;
+            Count--;
             return deleted;
         }
 
         private bool Empty()
         {
-            return (_count == 0) || (_first == null);
+            return (Count == 0);
         }
 
         private void CheckIfEmpty()
