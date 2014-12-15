@@ -11,12 +11,10 @@ namespace SuperMegaCoolQueue
         public int Count { get; private set; }
 
         private ListNode<T> _first;
-        private ListNode<T> _last;
 
         public SexyStack()
         {
             _first = new ListNode<T>(default(T));
-            _last = _first;
             Count = 0;
         }
 
@@ -42,7 +40,7 @@ namespace SuperMegaCoolQueue
         {
             ValidateIfEmpty();
             var deleted = _first.Data;
-            _first = _first.Next ?? _last;
+            _first = _first.Next;
             Count--;
             return deleted;
         }
