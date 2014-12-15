@@ -18,7 +18,7 @@ namespace SuperMegaCoolQueue
 
         public void Enqueue(T item)
         {
-            ListNode<T> newItem = new ListNode<T>(item);
+            var newItem = new ListNode<T>(item);
 
             if (Empty())
                 _first = newItem;
